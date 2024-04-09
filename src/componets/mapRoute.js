@@ -104,10 +104,7 @@ const MapRoute = () => {
   };
 
   return (
-    <LoadScript
-      googleMapsApiKey="AIzaSyDfVQzBHlXDkSgvLZUHHbutEh5Y5WmlHPA"
-      libraries={["places"]}
-    >
+    <LoadScript googleMapsApiKey="API_KEY" libraries={["places"]}>
       <Autocomplete onLoad={onLoadAutocomplete} onPlaceChanged={onPlaceChanged}>
         <input type="text" placeholder="Enter a location" style={inputStyle} />
       </Autocomplete>
