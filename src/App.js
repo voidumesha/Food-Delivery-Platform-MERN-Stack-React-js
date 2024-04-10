@@ -48,7 +48,7 @@ const inputStyle2 = {
   border: "1px solid transparent",
   width: "65%",
   height: "35px",
-  padding: "0px 12px",
+  padding: "1px 11px",
   paddingLeft: "40px",
   borderRadius: "5px",
   boxShadow: "0 2px 6px rgba(0, 0, 0, 0.6)",
