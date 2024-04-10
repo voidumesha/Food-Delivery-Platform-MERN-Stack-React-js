@@ -227,6 +227,7 @@ const App = () => {
             <img
               key={index}
               src={image}
+              alt="d-images"
               className={index === currentImageIndex ? "active" : ""}
               style={{
                 width: 420,
