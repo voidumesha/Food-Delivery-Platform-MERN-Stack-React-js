@@ -28,7 +28,7 @@ const inputStyle = {
   paddingLeft: "40px",
   borderRadius: "5px",
   boxShadow: "0 2px 6px rgba(0, 0, 0, 0.1)",
-  padding: "10px 40px 10px 20px",
+
   backgroundImage: `url(${image0})`,
   backgroundPosition: "top 5px left 3px",
   backgroundRepeat: "no-repeat",
@@ -48,7 +48,7 @@ const inputStyle2 = {
   border: "1px solid transparent",
   width: "65%",
   height: "35px",
-  padding: "1px 11px",
+
   paddingLeft: "40px",
   borderRadius: "5px",
   boxShadow: "0 2px 6px rgba(0, 0, 0, 0.6)",
