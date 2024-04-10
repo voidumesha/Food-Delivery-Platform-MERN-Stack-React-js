@@ -4,5 +4,8 @@ account_id = "umesharukshan2000@gmail.com"
 workers_dev = true
 
 [site]
-bucket = "./img"
+bucket = "./build"
 entry-point = "workers-site"
+
+[build]
+command = "npm run build"
