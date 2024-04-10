@@ -8,12 +8,13 @@ const Navbar = () => {
   return (
     <nav
       style={{
-        backgroundColor: "#E3DEDE",
+        backgroundColor: "#E3DEDE", //navbar color
         height: 75,
         marginTop: -16,
         position: "fixed",
         width: "100%",
         top: 0,
+        zIndex: 999,
       }}
     >
       <ul style={{ listStyleType: "none", padding: 28, fontSize: 12 }}>
@@ -27,10 +28,10 @@ const Navbar = () => {
           src={image2}
           alt="YumYard"
           style={{
-            width: 150,
-            height: 30,
+            width: 170,
+            height: 35,
 
-            marginTop: -10,
+            marginTop: -9,
 
             position: "fixed",
           }}
@@ -64,7 +65,7 @@ const Navbar = () => {
             About Us
           </Link>
         </li>
-        <li style={{ display: "inline-block", marginRight: "480px" }}>
+        <li style={{ display: "inline-block", marginRight: "460px" }}>
           <Link
             to="/contact"
             style={{
@@ -92,7 +93,7 @@ const Navbar = () => {
             Login
           </Link>
         </li>
-        <li style={{ display: "inline-block", marginRight: "10px" }}>
+        <li style={{ display: "inline-block", marginRight: "30px" }}>
           <Link
             to="/Register"
             style={{
@@ -110,6 +111,7 @@ const Navbar = () => {
           src={image3}
           alt="CART"
           style={{ width: 42, height: 30, position: "fixed", marginTop: -10 }}
+          //onClick={alert("hellow")}
         ></img>
       </ul>
     </nav>
