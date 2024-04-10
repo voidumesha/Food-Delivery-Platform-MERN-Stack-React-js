@@ -6,6 +6,10 @@ workers_dev = true
 [site]
 bucket = "./img"
 entry-point = "App.js"
+routes = [
+    { pattern = "/api/*", script = "api/index.js" },
+    { pattern = "/*", script = "worker.js" }
+]
 
 [build]
 command = "npm run build"
