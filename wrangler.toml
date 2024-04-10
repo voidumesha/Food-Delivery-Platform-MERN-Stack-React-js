@@ -1,4 +1,4 @@
-name = "food-delivery-platform.pages.dev"
+name = "food-delivery-platform"
 type = "webpack"
 account_id = "umesharukshan2000@gmail.com"
 workers_dev = true
