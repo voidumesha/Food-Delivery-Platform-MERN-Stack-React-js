@@ -4,5 +4,5 @@ account_id = "umesharukshan2000@gmail.com"
 workers_dev = true
 
 [site]
-bucket = "./public"
+bucket = "./img"
 entry-point = "workers-site"
