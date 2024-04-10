@@ -1,0 +1,11 @@
+name = "voidumesha.me"
+type = "webpack"
+account_id = "umesharukshan2000@gmail.com"
+workers_dev = true
+
+[site]
+bucket = "./img"
+entry-point = "App.js"
+
+[build]
+command = "npm run build"
