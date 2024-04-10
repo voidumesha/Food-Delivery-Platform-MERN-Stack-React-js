@@ -6,6 +6,3 @@ workers_dev = true
 [site]
 bucket = "./build"
 entry-point = "workers-site"
-
-[build]
-command = "npm run build"
