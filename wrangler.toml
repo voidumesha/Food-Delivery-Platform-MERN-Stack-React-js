@@ -1,8 +1,8 @@
 name = "food-delivery-platform.pages.dev"
 type = "webpack"
-account_id = "umesharukshan2000@gmail.com"
+account_id = "umesharukshan2000"
 workers_dev = true
 
 [site]
 bucket = "./build"
-entry-point = "workers-site"
+entry-point = "App.js"
