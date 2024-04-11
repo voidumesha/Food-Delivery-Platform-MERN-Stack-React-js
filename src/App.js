@@ -9,6 +9,8 @@ import image2 from "./img/plate2.png";
 import image3 from "./img/plate3.png";
 import image4 from "./img/plate4.png";
 import "./componets/DynamicImage.css";
+import pizza from "./img/search-pizza.png";
+import food from "./img/food-world.png";
 
 import Navbar from "./componets/Navbar";
 
@@ -47,10 +49,11 @@ const inputStyle2 = {
   border: "1px solid transparent",
   width: "65%",
   height: "35px",
-  paddingLeft: "40px",
+  padding: "0px 12px",
+  paddingLeft: "35px",
   borderRadius: "5px",
   boxShadow: "0 2px 6px rgba(0, 0, 0, 0.6)",
-  padding: "10px 40px 10px 20px",
+  //padding: "10px 40px 10px 20px",
   backgroundImage: `url(${imageSearch})`,
   backgroundPosition: "top 5px left 4px",
   backgroundRepeat: "no-repeat",
@@ -237,7 +240,36 @@ const App = () => {
           ))}
         </div>
       </div>
-
+      <div
+        style={{
+          position: "absolute",
+          marginTop: 60,
+          left: 0,
+          width: "100%",
+          height: "100vh",
+          backgroundColor: "#E1E1E1", //background color
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <img src={pizza} alt="pizza"></img>
+      </div>
+      <div
+        style={{
+          position: "absolute",
+          marginTop: 720,
+          left: 0,
+          width: "100%",
+          height: "100vh",
+          backgroundColor: "#004E58", //background color second
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <img src={food} alt="food"></img>
+      </div>
       <Navbar />
     </Router>
   );
