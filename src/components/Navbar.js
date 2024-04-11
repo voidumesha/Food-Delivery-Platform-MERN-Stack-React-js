@@ -9,8 +9,8 @@ const Navbar = () => {
     <nav
       style={{
         backgroundColor: "#E3DEDE", //navbar color
-        height: 75,
-        marginTop: -16,
+        height: 65,
+        marginTop: -2,
         position: "fixed",
         width: "100%",
         top: 0,

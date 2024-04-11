@@ -8,17 +8,15 @@ import image1 from "./img/plate1.png";
 import image2 from "./img/plate2.png";
 import image3 from "./img/plate3.png";
 import image4 from "./img/plate4.png";
-import "./componets/DynamicImage.css";
-import pizza from "./img/search-pizza.png";
-import food from "./img/food-world.png";
+import "./components/DynamicImage.css";
 
-import Navbar from "./componets/Navbar";
+import Food from "./components/Food";
+import Cart from "./components/Cart";
+import "./Styles/Food.css";
+
+import Navbar from "./components/Navbar";
 
 import { BrowserRouter as Router } from "react-router-dom";
-
-const handleClick = () => {
-  alert("will delivery foods for you !");
-};
 
 const inputStyle = {
   boxSizing: "border-box",
@@ -80,6 +78,36 @@ const overlayStyle = {
 };
 
 const App = () => {
+  const [show, setShow] = useState(true);
+  const [cart, setCart] = useState([]);
+  const [warning, setWarning] = useState(false);
+
+  const handleClick = (item) => {
+    let isPresent = false;
+    cart.forEach((product) => {
+      if (item.id === product.id) isPresent = true;
+    });
+    if (isPresent) {
+      setWarning(true);
+      setTimeout(() => {
+        setWarning(false);
+      }, 2000);
+      return;
+    }
+    setCart([...cart, item]);
+  };
+
+  const handleChange = (item, d) => {
+    let ind = -1;
+    cart.forEach((data, index) => {
+      if (data.id === item.id) ind = index;
+    });
+    const tempArr = cart;
+    tempArr[ind] += d;
+    if (tempArr[ind].amount === 0) tempArr[ind].amount = 1;
+    ServiceWorkerRegistration([...tempArr]);
+  };
+
   const images = [image1, image2, image3, image4];
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   useEffect(() => {
@@ -143,9 +171,9 @@ const App = () => {
             fontFamily: "'Montserrat', sans-serif",
             letterSpacing: "5px",
             color: "#FFFFFF",
-            fontSize: 30,
-            marginTop: -120,
-            marginRight: 720,
+            fontSize: 25,
+            marginTop: -90,
+            marginRight: 790,
           }}
         >
           You wanna taste something ?
@@ -190,7 +218,7 @@ const App = () => {
               boxShadow: "0 2px 6px rgba(0, 0, 0, 0.6)",
               lineHeight: "1",
               height: 32,
-              marginTop: 15,
+              marginTop: 0,
               fontSize: 15,
             }}
             onClick={handleClick}
@@ -240,36 +268,21 @@ const App = () => {
           ))}
         </div>
       </div>
-      <div
-        style={{
-          position: "absolute",
-          marginTop: 60,
-          left: 0,
-          width: "100%",
-          height: "100vh",
-          backgroundColor: "#E1E1E1", //background color
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <img src={pizza} alt="pizza"></img>
-      </div>
-      <div
-        style={{
-          position: "absolute",
-          marginTop: 720,
-          left: 0,
-          width: "100%",
-          height: "100vh",
-          backgroundColor: "#004E58", //background color second
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <img src={food} alt="food"></img>
-      </div>
+      <div style={{ marginTop: 100 }}></div>
+      <React.Fragment>
+        <Navbar size={cart.length} setShow={setShow} />
+        <Navbar size={cart.length} setShow={setShow} />
+        {show ? (
+          <Food handleClick={handleClick} />
+        ) : (
+          <Cart cart={cart} setCart={setCart} handleChange={handleChange} />
+        )}
+
+        {warning && (
+          <div className="warning">Item is already added to your cart</div>
+        )}
+      </React.Fragment>
+
       <Navbar />
     </Router>
   );
