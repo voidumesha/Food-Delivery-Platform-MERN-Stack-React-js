@@ -55,20 +55,20 @@ const inputStyle2 = {
   position: "absolute",
   backgroundColor: "rgba(172, 172, 172, 0.46)",
   color: "#545454",
-  zIndex: 999,
   display: "inline-block",
 };
 
 const overlayStyle = {
   position: "absolute",
-  top: 0,
-  left: 0,
+  outline: "none",
   width: "100%",
   height: "100vh",
-  backgroundColor: "#FFFD74", //background color
-  display: "flex",
+  backgroundColor: "#FFFD74", 
+  display: "inline-block",
   justifyContent: "center",
+  backgroundRepeat: "no-repeat",
   alignItems: "center",
+   
 };
 
 const Home = () => {
@@ -205,7 +205,7 @@ const Home = () => {
           </p>
         </div>
 
-        <div style={{ marginLeft: 30, marginTop: 12 }}>
+        <div style={{ marginLeft: 30, marginTop: 12, }}>
           <input
             type="text"
             placeholder="Enter your address"

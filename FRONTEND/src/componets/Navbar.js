@@ -8,12 +8,12 @@ const Navbar = () => {
     <nav
       style={{
         backgroundColor: "#E3DEDE", //navbar color
-        height: 75,
+        height: 80,
         marginTop: -2,
         position: "fixed",
         width: "100%",
         top: 0,
-        zIndex: 999,
+        zIndex: 1000,
       }}
     >
       <ul style={{ listStyleType: "none", padding: 28, fontSize: 12 }}>
@@ -30,7 +30,7 @@ const Navbar = () => {
             width: 170,
             height: 35,
 
-            marginTop: -9,
+            marginTop: -12,
 
             position: "fixed",
           }}
@@ -64,7 +64,7 @@ const Navbar = () => {
             About Us
           </Link>
         </li>
-        <li style={{ display: "inline-block", marginRight: "460px" }}>
+        <li style={{ display: "inline-block", marginRight: "440px" }}>
           <Link
             to="/contact"
             style={{
@@ -92,7 +92,7 @@ const Navbar = () => {
             Login
           </Link>
         </li>
-        <li style={{ display: "inline-block", marginRight: "30px" }}>
+        <li style={{ display: "inline-block", marginRight: "35px" }}>
           <Link
             to="/Register"
             style={{
@@ -107,10 +107,9 @@ const Navbar = () => {
           </Link>
         </li>
         <img
-          to="./components/Components/Cart"
           src={image3}
           alt="CART"
-          style={{ width: 42, height: 30, position: "fixed", marginTop: -10 }}
+          style={{ width: 42, height: 30, position: "fixed", marginTop: -7, marginLeft: -10 }}
           //onClick={alert("hellow")}
         ></img>
       </ul>
