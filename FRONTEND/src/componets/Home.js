@@ -109,10 +109,11 @@ const Home = () => {
           style={{
             fontFamily: "'Montserrat', sans-serif",
             letterSpacing: "5px",
-            color: "#1F1F1F",
+            color: "#4E4E4E",
             fontSize: 70,
             marginTop: -100,
             marginRight: 590,
+            textShadow: "2px 2px 5px rgba(0, 0, 0, 0.5)",
           }}
         >
           Are you Hungry?
@@ -224,7 +225,7 @@ const Home = () => {
                 width: 420,
                 height: 420,
                 marginTop: 170,
-                marginLeft: 700,
+                marginLeft: 760,
               }}
             />
           ))}
