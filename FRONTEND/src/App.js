@@ -1,10 +1,14 @@
-//import Home from "./componets/Home";
-import MapRoute from "./componets/mapRoute";
-
-//import React, { useEffect, useState } from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Navbar from "./componets/Navbar";
+import LandingPage from "./componets/landingPage";
 
 const App = () => {
-  return <MapRoute />;
+  return (
+    <Router>
+      <Navbar/>
+      <LandingPage/>
+    </Router>
+  );
 };
 
 export default App;

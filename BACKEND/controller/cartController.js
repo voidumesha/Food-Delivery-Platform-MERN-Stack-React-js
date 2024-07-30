@@ -1,39 +1,39 @@
-const CartItem = require('../models/cartItem');
+const CartItem = require('./models/cartItem');
 const food = require('../models/food');
 
-// Controller for adding an item to the cart
+
 exports.addToCart = async (req, res) => {
     try {
         const { nic, foodId, quantity } = req.body;
 
-        // Check if the required fields are provided
+        
         if (!nic || !foodId || !quantity) {
             return res.status(400).json({ error: "All fields are required" });
         }
 
-        // Check if the cart item already exists for the customer
+         
         let cartItem = await CartItem.findOne({ nic});
 
-        // If the cart item doesn't exist, create a new one
+  
         if (!cartItem) {
             cartItem = new CartItem({
                 nic,
                 foodItems: [{ foodId, quantity }]
             });
         } else {
-            // Check if the food item already exists in the cart
+           
             const existingFoodItem = cartItem.foodItems.find(item => item.foodId.equals(foodId));
 
             if (existingFoodItem) {
-                // If the food item exists, update the quantity
+                
                 existingFoodItem.quantity += quantity;
             } else {
-                // If the food item doesn't exist, add it to the array
+                
                 cartItem.foodItems.push({ foodId, quantity });
             }
         }
 
-        // Save the cart item to the database
+        
         const savedCartItem = await cartItem.save();
 
         res.status(201).json({ 

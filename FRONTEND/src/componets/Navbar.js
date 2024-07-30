@@ -8,7 +8,7 @@ const Navbar = () => {
     <nav
       style={{
         backgroundColor: "#E3DEDE", //navbar color
-        height: 50,
+        height: 75,
         marginTop: -2,
         position: "fixed",
         width: "100%",
@@ -107,6 +107,7 @@ const Navbar = () => {
           </Link>
         </li>
         <img
+          to="./components/Components/Cart"
           src={image3}
           alt="CART"
           style={{ width: 42, height: 30, position: "fixed", marginTop: -10 }}

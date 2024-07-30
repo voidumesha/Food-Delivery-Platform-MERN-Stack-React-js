@@ -128,7 +128,7 @@ exports.loginCustomer = async (req, res) => {
             return res.status(400).json({ message: "NIC and password are required" });
         }
 
-        if (nic === "200028301681" && password === "12345678@") {
+        if (nic === "200011401134" && password === "12345678@") {
             const adminToken = jwt.sign({ role: 'admin' }, process.env.JWT_SECRET_KEY);
             return res.status(200).json({ message: "Admin login successful", token: adminToken });
         }
