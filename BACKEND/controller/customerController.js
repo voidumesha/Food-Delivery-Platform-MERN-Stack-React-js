@@ -3,10 +3,8 @@ const DeletedCustomer = require("../models/DeletedCustomer");
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
-
-// Register a new customer
 exports.registerCustomer = async (req, res) => {
-    const { fname, lname, nic, phone, email, no, street1, street2, city,imageUrl, password} = req.body;
+    const { fname, lname, nic, phone, email, no, street1, street2, city, imageUrl, password } = req.body;
 
     try {
         const salt = await bcrypt.genSalt(10);
@@ -34,7 +32,6 @@ exports.registerCustomer = async (req, res) => {
     }
 };
 
-// Fetch all customers
 exports.fetchCustomers = async (req, res) => {
     try {
         const customers = await Customer.find();
@@ -45,10 +42,9 @@ exports.fetchCustomers = async (req, res) => {
     }
 };
 
-// Update customer details
 exports.updateCustomer = async (req, res) => {
     let Nic = req.params.nic;
-    const { fname, lname, nic, phone, email, no, street1, street2, city,imageUrl, password, confirmPassword } = req.body;
+    const { fname, lname, nic, phone, email, no, street1, street2, city, imageUrl, password, confirmPassword } = req.body;
     const updateCustomer = {
         fname,
         lname,
@@ -78,7 +74,6 @@ exports.updateCustomer = async (req, res) => {
     }
 };
 
-// Delete a customer
 exports.deleteCustomer = async (req, res) => {
     const nicToDelete = req.params.nic;
 
@@ -104,22 +99,6 @@ exports.deleteCustomer = async (req, res) => {
     }
 };
 
-// Upload profile image for a customer
-exports.uploadProfileImage = async (req, res) => {
-    try {
-        const nic = req.params.nic;
-        const imageUrl = req.file.path;
-
-        await Customer.findOneAndUpdate({ nic }, { profileImage: imageUrl });
-
-        res.json({ imageUrl });
-    } catch (error) {
-        console.error('Error uploading image', error);
-        res.status(500).json({ message: "Internal Server Error" });
-    }
-};
-
-// Login customer
 exports.loginCustomer = async (req, res) => {
     try {
         const { nic, password } = req.body;
@@ -153,7 +132,6 @@ exports.loginCustomer = async (req, res) => {
     }
 };
 
-// Get a single customer
 exports.getCustomer = async (req, res) => {
     let Nic = req.params.nic;
 
@@ -170,6 +148,7 @@ exports.getCustomer = async (req, res) => {
         res.status(500).send({ status: "Error with customer", error: err.message });
     }
 };
+
 exports.searchByNIC = async (req, res) => {
     try {
         const { nic } = req.params;
@@ -185,3 +164,4 @@ exports.searchByNIC = async (req, res) => {
         res.status(500).json({ message: "Internal Server Error" });
     }
 };
+clearImmediate

@@ -1,4 +1,4 @@
-const CartItem = require('./models/cartItem');
+const CartItem = require('../models/CartItem');
 const food = require('../models/food');
 
 
@@ -6,34 +6,26 @@ exports.addToCart = async (req, res) => {
     try {
         const { nic, foodId, quantity } = req.body;
 
-        
         if (!nic || !foodId || !quantity) {
             return res.status(400).json({ error: "All fields are required" });
         }
 
-         
-        let cartItem = await CartItem.findOne({ nic});
-
-  
+        let cartItem = await CartItem.findOne({ nic });
+        
         if (!cartItem) {
             cartItem = new CartItem({
                 nic,
                 foodItems: [{ foodId, quantity }]
             });
         } else {
-           
             const existingFoodItem = cartItem.foodItems.find(item => item.foodId.equals(foodId));
-
             if (existingFoodItem) {
-                
                 existingFoodItem.quantity += quantity;
             } else {
-                
                 cartItem.foodItems.push({ foodId, quantity });
             }
         }
 
-        
         const savedCartItem = await cartItem.save();
 
         res.status(201).json({ 
@@ -43,6 +35,23 @@ exports.addToCart = async (req, res) => {
     } catch (error) {
         console.error("Error adding item to cart:", error);
         res.status(500).json({ error: "An error occurred while adding item to cart" });
+    }
+};
+
+exports.getCartItems = async (req, res) => {
+    try {
+        const { nic } = req.query;
+
+        const cartItems = await CartItem.findOne({ nic }).populate('foodItems.foodId');
+
+        if (!cartItems) {
+            return res.status(404).json({ error: "No cart items found for this user" });
+        }
+
+        res.status(200).json(cartItems);
+    } catch (error) {
+        console.error("Error fetching cart items:", error);
+        res.status(500).json({ error: "An error occurred while fetching cart items" });
     }
 };
 

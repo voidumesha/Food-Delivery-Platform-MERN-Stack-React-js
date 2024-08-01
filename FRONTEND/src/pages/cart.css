@@ -1,16 +1,26 @@
 .container {
   display: flex;
-  width: 100%;
   margin-bottom: 30px;
   margin: auto;
   align-items: center;
   margin-top: 40px;
   overflow-x: auto; /* Allow horizontal scrolling */
+  gap: 20px; /* Space between items */
+  padding: 10px;
+  width: 76%;
+  
 }
+.container::-webkit-scrollbar {
+  display: none;
+}
+
+
+
 .root {
   display: flex; /* Use flexbox for horizontal layout */
   gap: 20px; /* Space between items */
   padding: 10px;
+  
 }
   
   .cartBox {
@@ -290,3 +300,101 @@
     z-index: 1000;
   }
   
+
+
+
+
+
+
+/* cartpage */
+
+.CartPage{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 100px;
+  
+}
+.CartPage h1{
+  font-size: 2.5em;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* cart.css */
+
+.popularpage {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+.popularpage h1 {
+  font-size: 3em;
+  margin-bottom: 50px;
+  color: #333;
+  margin-top: 80px;
+
+}
+
+.food-items {
+  display: flex;
+  flex-direction: row;
+  overflow-x: auto;
+  gap: 20px;
+  padding: 10px;
+  margin: 0 -10px;
+}
+
+.food-item {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  min-width: 250px; /* Adjust width as needed */
+  flex: 0 0 auto;
+  padding: 20px;
+  text-align: left;
+  transition: transform 0.3s ease;
+}
+
+.food-item:hover {
+  transform: translateY(-10px);
+}
+
+.food-item img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.food-item h2 {
+  font-size: 1.5em;
+  margin: 10px 0;
+  color: #333;
+}
+
+.food-item p {
+  color: #666;
+  line-height: 1.5;
+}
+
+.food-item .price {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #e74c3c;
+  margin-top: 10px;
+}
+
+/* Optional: Hide scrollbar for better appearance */
+.food-items::-webkit-scrollbar {
+  display: none;
+}
+
+.food-items {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}

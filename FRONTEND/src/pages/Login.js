@@ -1,53 +1,72 @@
-const MongoClient = require('mongodb').MongoClient;
-const dotenv = require('dotenv');
-require('dotenv').config();
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import './login.css';
 
-// Load environment variables from .env file
-dotenv.config();
+const Login = () => {
+  const [nic, setNic] = useState('');
+  const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
-// Access environment variables
-const url = process.env.MONGODB_URL;
-const dbName = process.env.DATABASE_NAME;
-
-
-
-// Function to check login credentials
-async function checkLoginCredentials(email, password) {
+  const handleLogin = async (e) => {
+    e.preventDefault();
     try {
-        // Create a new MongoClient
-        const client = new MongoClient(url);
+      const response = await fetch('http://localhost:3001/customers/loginCus', { 
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ nic, password }),
+      });
 
-        // Connect to the MongoDB server
-        await client.connect();
+      const contentType = response.headers.get('content-type');
+      let data;
+      if (contentType && contentType.includes('application/json')) {
+        data = await response.json();
+      } else {
+        data = { message: await response.text() };
+      }
 
-        // Select the database
-        const db = client.db(dbName);
-
-        // Select the collection
-        const collection = db.collection('customers');
-
-        // Find the user with the given username and password
-        const user = await collection.findOne({ email, password });
-
-        // Close the connection
-        await client.close();
-
-        // Return true if the user exists, false otherwise
-        return !!user;
+      if (response.ok) {
+        localStorage.setItem('nic', nic);  // Store NIC in localStorage
+        alert(data.message);
+        navigate('/home'); // Redirect to the dashboard page
+      } else {
+        alert('Login failed: ' + data.message);
+      }
     } catch (error) {
-        console.error('Error:', error);
-        throw error;
+      console.error('Error during login:', error);
+      alert('An error occurred during login. Please try again.');
     }
-}
+  };
 
-// Usage example
-const email = 'example@gmail.com';
-const password = 'example_password';
+  return (
+    <div className='loginPage'>
+      <h2>Login</h2>
+      <form onSubmit={handleLogin}>
+        <div>
+          <label>NIC:</label>
+          <input
+            type="text"
+            name="nic"
+            value={nic}
+            onChange={(e) => setNic(e.target.value)}
+            required
+          />
+        </div>
+        <div>
+          <label>Password:</label>
+          <input
+            type="password"
+            name="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+        </div>
+        <button type="submit">Login</button>
+      </form>
+    </div>
+  );
+};
 
-checkLoginCredentials(email, password)
-    .then((result) => {
-        console.log('Login credentials:', result);
-    })
-    .catch((error) => {
-        console.error('Error:', error);
-    });
+export default Login;

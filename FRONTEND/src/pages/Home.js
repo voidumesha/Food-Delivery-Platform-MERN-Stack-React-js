@@ -9,6 +9,7 @@ import image2 from "./img/plate2.png";
 import image3 from "./img/plate3.png";
 import image4 from "./img/plate4.png";
 import "./DynamicImage.css";
+import PopularFoodPage from "./popularFoodPage";
 //import Navbar from "./Navbar";
 
 const inputStyle = {
@@ -231,6 +232,7 @@ const Home = () => {
           ))}
         </div>
       </div>
+      <PopularFoodPage/>
     </>
   );
 };
