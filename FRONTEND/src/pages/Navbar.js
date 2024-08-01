@@ -1,9 +1,14 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import image1 from "./img/logo.png";
 import image2 from "./img/yumyard.png";
 import image3 from "./img/cart.png";
 
 const Navbar = () => {
+  const navigate = useNavigate();
+
+  const handleImageClick = () => {
+    navigate("/cart");
+  };
   return (
     <nav
       style={{
@@ -109,9 +114,15 @@ const Navbar = () => {
         <img
           src={image3}
           alt="CART"
-          style={{ width: 42, height: 30, position: "fixed", marginTop: -7, marginLeft: -10 }}
-          //onClick={alert("hellow")}
-        ></img>
+          style={{
+            width: 42,
+            height: 30,
+            position: "fixed",
+            marginTop: -7,
+            marginLeft: -10,
+          }}
+          onClick={handleImageClick}
+        />
       </ul>
     </nav>
   );
